@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý chuyến xe</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebarAdmin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#sidebarMenu">
+            <img src="{{ url_for('static', filename='data/hamburger_menu_icon.jpeg') }}" alt="Logo" width="50">
+        </button>
+        <!-- Sidebar -->
+        <nav class="col-md-2 bg-light sidebar collapse d-md-block" id="sidebarMenu">
+            <div class="sidebar-sticky">
+                <div class="text-center py-3 d-flex justify-content-between align-items-center p-4">
+                    <img src="{{ url_for('static', filename='data/bus.png') }}" alt="Logo" width="100px">
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/HomeAdmin">
+                            <i class="fa-solid fa-house"></i>
+                            <p class="mb-0 ms-2 p-2">Trang Chủ</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="/UserAdmin" data-toggle="collapse"
+                           data-target="#userSubmenu">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="mb-0 ms-2 p-2">Người Dùng</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+
+                        <ul class="collapse pl-4" id="userSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserAdmin/NhanVien">Nhân Viên</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserAdmin/KhachHang">Khách Hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#tuyenXeSubmenu">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Tuyến Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="tuyenXeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/TuyenXe">Danh Sách Tuyến Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemTuyenXe">Thêm Tuyến Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#chuyenXeSubmenu">
+                            <i class="fa-solid fa-map"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Chuyến Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="chuyenXeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ChuyenXe">Danh Sách Chuyến Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemChuyenXe">Thêm Chuyến Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#xeSubmenu">
+                            <i class="fa-solid fa-bus"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="xeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Xe">Danh Sách Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemXe">Thêm Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/HoaDon">
+                            <i class="fa-solid fa-receipt"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Hóa Đơn</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/ThongKe">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <p class="mb-0 ms-2 p-2">Thống Kê</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-10 ml-sm-auto px-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h2>Chuyên Xe / Danh Sách Chuyến Xe</h2>
+                <div class="text-right">
+                    <span>Xin chào, Admin</span>
+                    <img src="{{ url_for('static', filename='data/avatar.png') }}" alt="Avatar" class="rounded-circle"
+                         width="30">
+                </div>
+            </div>
+            <!-- Search and Add Button -->
+            <div class="d-flex justify-content-between mb-3">
+                <div class="form-inline">
+                    <select class="form-control mr-3" id="diemDi" name="diemDi">
+                        <option value="">Chọn tỉnh thành</option>
+                        {% for tinh in tinhs %}
+                            <option value="{{ tinh.name }}">{{ tinh.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select class="form-control mr-3" id="diemDen" name="diemDen">
+                        <option value="">Chọn tỉnh thành</option>
+                        {% for tinh in tinhs %}
+                            <option value="{{ tinh.name }}">{{ tinh.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button class="btn btn-danger" id="timChuyenXe" type="submit">Tìm Chuyến Xe</button>
+                </div>
+                <a href="/ThemChuyenXe" class="btn btn-primary"><i class="fa fa-plus"></i> Thêm Chuyến Xe</a>
+            </div>
+
+            <!-- Employee Table -->
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên Chuyến Xe</th>
+                    <th>Thời Gian Đi</th>
+                    <th>Thời Gian Đến</th>
+                    <th>Xe</th>
+                    <th>Chi tiết xe</th>
+                    <th>Hành Động</th>
+                </tr>
+                </thead>
+
+                <tbody id="customer-table-body">
+                {% if chuyenXe.items %}
+                    {% for c in chuyenXe.items %}
+                        <tr>
+                            <td>{{ c.idLichTrinh }}</td>
+                            <td>{{ c.diem_di_tinh_name }} - {{ c.diem_den_tinh_name }}</td>
+                            <td>{{ c.thoiGianDi }}</td>
+                            <td>{{ c.thoiGianDen }}</td>
+                            <td>{{ c.bienSo }}</td>
+                            <td><a href="{{ url_for('chi_tiet_chuyen_xe', chuyen_xe_id=c.idLichTrinh) }}">Chi tiết xe</a></td>
+                            <td>
+                                <button class="btn btn-danger delete-btn" data-id="{{ c.idLichTrinh }}">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <a href="{{ url_for('edit_trip', id=c.idLichTrinh) }}" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Không tìm thấy chuyến xe phù hợp!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+
+            <!-- Total Employees -->
+            <div class="mb-2">
+                <h5 id="total-customers">Tổng số chuyến xe: {{ sum }}</h5>
+            </div>
+
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        {% if chuyenXe.has_prev %}
+                            <a class="page-link"
+                               href="{{ url_for('chuyenXe_admin', page=chuyenXe.prev_num) }}">Previous</a>
+                        {% endif %}
+                    </li>
+                    <li class="page-item active"><span
+                            class="page-link">Trang {{ chuyenXe.page }} trên {{ chuyenXe.pages }}</span></li>
+                    <li class="page-item">
+                        {% if chuyenXe.has_next %}
+                            <a class="page-link" href="{{ url_for('chuyenXe_admin', page=chuyenXe.next_num) }}">Next</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const deleteButtons = document.querySelectorAll(".delete-btn");
+
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const idChuyenXe = this.getAttribute("data-id");
+
+                if (confirm("Bạn có chắc chắn muốn xóa xe này?")) {
+                    fetch(`/xoa_ChuyenXe/${idChuyenXe}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                this.closest('tr').remove(); // Xóa hàng khỏi bảng nếu thành công
+                                alert("Đã xóa thành công!");
+                            } else {
+                                alert("Xóa không thành công. Vui lòng thử lại.");
+                            }
+                        })
+                        .catch(error => console.error("Error:", error));
+                }
+            });
+        });
+    });
+    document.getElementById('timChuyenXe').addEventListener('click', function (event) {
+        const diemDi = document.getElementById('diemDi').value;
+        const diemDen = document.getElementById('diemDen').value;
+
+        if (!diemDi || !diemDen) {
+            alert('Vui lòng chọn cả điểm Đi và điểm Đến!');
+            event.preventDefault(); // Ngăn gửi yêu cầu nếu dữ liệu không hợp lệ
+            return false;
+        }
+
+        // Chuyển hướng hoặc gửi yêu cầu với điểm Đi và điểm Đến
+        const url = `/ChuyenXe?diemDi=${encodeURIComponent(diemDi)}&diemDen=${encodeURIComponent(diemDen)}`;
+        window.location.href = url; // Chuyển hướng sang URL mới với tham số
+    });
+</script>
+
+
+</body>
+</html>

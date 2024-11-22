@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dangnhap.css') }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+    }
+    html {
+        font-family: Calibri, sans-serif;
+        box-sizing: border-box;
+    }
+    .pad-30 {
+        padding: 0 30px !important;
+    }
+    .dangNhapChinh {
+        display: flex;
+        justify-content: center;
+        background-image: linear-gradient(to left, pink , green);
+    }
+    .dangNhapChinh__dangNhap1 {
+        width: 700px;
+        min-height: 600px;
+        background-color: #fff;
+        margin: 60px 0;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .dangNhapChinh .header_dangNhap {
+        margin-bottom: 24px;
+    }
+    .dangNhapChinh .logo_dangNhap {
+        width: 170px;
+        margin: 40px 258px 0px 258px;
+    }
+    .dangNhapChinh .spaceDangNhap {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .dangNhapChinh .oInput{
+        display: flex;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 3px;
+    }
+    .dangNhapChinh .inputdangNhap {
+       padding: 4px 10px;
+       outline: none;
+       border: none;
+    }
+    .dangNhapChinh .submit1 {
+        width: 100%;
+        background: #00b14f;
+        color: #fff;
+        border: none;
+        font-size: 14px;
+        padding: 12px;
+        line-height: 20px;
+        border-radius: 4px;
+    }
+    .dangNhapChinh .submit1 {
+        margin: 26px 0;
+        cursor: pointer;
+    }
+    .dangNhapChinh .submit1:hover {
+        opacity: 0.8;
+    }
+    .dangNhapChinh .link-check {
+       transform: scale(1.5);
+       margin-right: 10px;
+    }
+    .dangNhapChinh .xacnhan-link {
+       text-decoration: none;
+       color: #00b14f;
+    }
+</style>
+
+<div class="dangNhapChinh">
+    <div class="dangNhapChinh__dangNhap1">
+        <div class="dangNhapChinh__bocItem">
+            <div class="header_dangNhap">
+                <img class="logo_dangNhap" src="./static/data/bus.png" alt="My Bus Logo">
+            </div>
+            <div class="container">
+                <h1 class="text-center">ĐĂNG KÝ</h1>
+
+                <!-- Hiển thị thông báo lỗi nếu có -->
+                {% if err_msg %}
+                <div class="alert alert-danger">
+                    {{ err_msg }}
+                </div>
+                {% endif %}
+
+                <!-- Form đăng ký -->
+                <form method="post">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Nhập tên đăng nhập" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Nhập họ tên" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Xác nhận mật khẩu" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Đăng ký" class="submit1"/>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Liên kết chuyển tới trang đăng nhập -->
+            <div class="duoilink chuacoTk">
+                <p class="hoac1">Bạn đã có tài khoản?</p>
+                <a href="/login" class="xacnhan-link chuacoTk__link">Đăng nhập ngay</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

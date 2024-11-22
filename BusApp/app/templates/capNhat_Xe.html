@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa xe</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebarAdmin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#sidebarMenu">
+            <img src="{{ url_for('static', filename='data/hamburger_menu_icon.jpeg') }}" alt="Logo" width="50">
+        </button>
+        <!-- Sidebar -->
+        <nav class="col-md-2 bg-light sidebar collapse d-md-block" id="sidebarMenu">
+            <div class="sidebar-sticky">
+                <div class="text-center py-3 d-flex justify-content-between align-items-center p-4">
+                    <img src="{{ url_for('static', filename='data/bus.png') }}" alt="Logo" width="100px">
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/HomeAdmin">
+                            <i class="fa-solid fa-house"></i>
+                            <p class="mb-0 ms-2 p-2">Trang Chủ</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="/UserAdmin" data-toggle="collapse"
+                           data-target="#userSubmenu">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="mb-0 ms-2 p-2">Người Dùng</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+
+                        <ul class="collapse pl-4" id="userSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserAdmin/NhanVien">Nhân Viên</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/UserAdmin/KhachHang">Khách Hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#tuyenXeSubmenu">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Tuyến Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="tuyenXeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/TuyenXe">Danh Sách Tuyến Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemTuyenXe">Thêm Tuyến Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#chuyenXeSubmenu">
+                            <i class="fa-solid fa-map"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Chuyến Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="chuyenXeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ChuyenXe">Danh Sách Chuyến Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemChuyenXe">Thêm Chuyến Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed d-flex align-items-center" href="#" data-toggle="collapse"
+                           data-target="#xeSubmenu">
+                            <i class="fa-solid fa-bus"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Xe</p>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="collapse pl-4" id="xeSubmenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Xe">Danh Sách Xe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ThemXe">Thêm Xe</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/HoaDon">
+                            <i class="fa-solid fa-receipt"></i>
+                            <p class="mb-0 ms-2 p-2">Quản Lý Hóa Đơn</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="/ThongKe">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <p class="mb-0 ms-2 p-2">Thống Kê</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="col-md-10 ml-sm-auto px-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h2>Cập nhật xe</h2>
+                <div class="text-right">
+                    <span>Xin chào, Admin</span>
+                    <img src="{{ url_for('static', filename='data/avatar.png') }}" alt="Avatar" class="rounded-circle"
+                         width="30">
+                </div>
+            </div>
+
+            <div class="container">
+                <h2 class="my-4">Cập nhật xe</h2>
+                <form action="/capNhat_Xe/{{ vehicle.idXe }}" method="POST">
+                    <div class="form-group">
+                        <label for="bienSo">Biển số</label>
+                        <input type="text" class="form-control" id="bienSo" name="bienSo" value="{{ vehicle.bienSo }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sucChua">Sức chứa</label>
+                        <input type="text" class="form-control" id="sucChua" name="sucChua" value="{{ vehicle.sucChua }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tinhTrangXe">Tình trạng xe</label>
+                        <select class="form-control" id="tinhTrangXe" name="tinhTrangXe" required>
+                            <option value="Hoạt động" {% if vehicle.tinhTrangXe == 'Hoạt động' %} selected {% endif %}>Hoạt động</option>
+                            <option value="Bảo trì" {% if vehicle.tinhTrangXe == 'Bảo trì' %} selected {% endif %}>Bảo trì</option>
+                            <option value="Dừng hoạt động" {% if vehicle.tinhTrangXe == 'Dừng hoạt động' %} selected {% endif %}>Dừng hoạt động</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-warning mt-3">Cập nhật xe</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+</div>

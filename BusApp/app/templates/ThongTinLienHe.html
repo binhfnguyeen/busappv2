@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="xe đẹp,tin tức,xe mới nhất">
+    <meta http-equiv="refresh" content="900">
+    <title>Thong tin lien he</title>
+    <link rel="shortcut icon" href="img/cafe.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/thongtinLH.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/index.js"></script
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="./static/data/bus.png" alt="My Bus Logo" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/lichtrinh">Lịch trình</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ttlienhe">Liên hệ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/lshoadon">Hóa đơn</a></li>
+                <li class="nav-item"><a class="nav-link" href="/datve">Đặt vé</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="footers">
+    <div class="lienhe"><strong>LIÊN HỆ VỚI CHÚNG TÔI:</strong></div>
+    <div class="lienhe1">Cảm ơn bạn đã ghé thăm website. Nếu bạn muốn nhận được thông báo từ chúng tôi dễ dàng, hãy điền
+        vào form dưới đây.
+    </div>
+    <div class="footer">
+        <div class="foot">
+            <div class="foot1">
+                <div class="foot1s">
+                    <span class="icon1 icon"><i class="fa fa-home" style="color:blue;"></i></span>
+                    <div>Address</div>
+                    <div class="foot1ss">Huyện Nhà Bè, TP.HCM</div>
+                </div>
+            </div>
+            <div class="foot2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.764100538581!2d106.68809457408616!3d10.675409961050816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31753100099ce9ed%3A0xdb6079801f0735ea!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBN4bufIFRQLiBI4buTIENow60gTWluaCAoY8ahIHPhu58gMyk!5e0!3m2!1svi!2s!4v1730307399182!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="foots">
+            <div class="foot3">
+                <div class="foot31">
+                    <div class="foot1s">
+                        <span class="icon1 icon"><i class="fa fa-envelope" style="color:blue;"></i></span>
+                        <div>Email</div>
+                        <div class="foot1ss">ou.edu@gmail.com</div>
+                    </div>
+                </div>
+                <div class="foot32">
+                    <div class="foot1s">
+                        <span class="icon1 icon"><i class="fa fa-phone" style="color:blue;"></i></span>
+                        <div>Hotline</div>
+                        <div class="foot1ss">090-987-7535</div>
+                    </div>
+                </div>
+            </div>
+            <div class="foot4">
+                <div class="foot4s">
+                    <div class="foot41">
+                        <span><input type="text" placeholder="Nhập tên"/></span>
+                        <span><input type="text" placeholder="Nhập email"/></span>
+                    </div>
+                    <div class="foot42 box">
+                        <input type="text" placeholder="Chủ đề"/>
+                    </div>
+                    <div class="foot43 box">
+                        <input type="text" placeholder="Nội dung..."/>
+                    </div>
+                    <div class="foot44">
+                        <div>Gửi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</html>

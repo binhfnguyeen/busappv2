@@ -1,0 +1,36 @@
+        body {
+            background: linear-gradient(to right, #77E9F4, #ACD8AA, #A8DADC);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background-color: #d9e8e5;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        .login-image {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .login-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .btn-submit button {
+            width: 100%;
+            background-color: #38b48b;
+            border: none;
+        }
+        .login-container {
+            background-color: #d9e8e5;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 700px; /* Tăng chiều rộng tối đa */
+            width: 100%;
+        }

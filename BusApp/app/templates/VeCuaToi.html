@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VeCuaToi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lichtrinh.css') }}">
+    <link rel="stylesheet" href="./icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8b73ecba2a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">My Bus</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Trang chủ</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/lichtrinh">Lịch trình</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ttlienhe">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lshoadon">Hóa đơn</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <footer class="footer-lichtrinh">
+        <table>
+            <thead>
+
+                <tr>
+                    <td><br>Tuyến xe</br>
+                    </td>
+                    <td><br>Quãng đường</br>
+                    </td>
+                    <td><br>Thời gian đi</br>
+                    </td>
+                    <td><br>Giờ chạy</br>
+                    </td>
+                    </td>
+                    <td><br>Trạng thái</br>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data%}
+                <tr>
+                    <td class="tr-thuhai"><br>{{i[0]}} - {{i[1]}}</br>
+                    </td>
+                    <td class="tr-thuhai"><br>{{i[2]}}</br>
+                    </td>
+                    <td class="tr-thuhai"><a href="#">Chi tiết <i class="ti-info"></i></a></td>
+                    <td class="tr-thuhai"><br>{{i[3]}}</br>
+                    </td>
+                    <td class="tr-thuhai"><br>{{i[4]}}</br>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </footer>
+</body>
+
+</html>

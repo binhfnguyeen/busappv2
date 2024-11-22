@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dangnhap.css') }}"/>
+    <link rel="stylesheet" href="./asset/icon/fontawesome-free-6.4.2-web/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+        }
+        html {
+            font-family: Calibri, sans-serif;
+            box-sizing: border-box;
+        }
+        .pad-30 {
+            padding: 0 30px !important;
+        }
+        /* css ô đăng nhập, đăng kí*/
+
+        /* css khung đăng nhập */
+        .dangNhapChinh {
+            display: flex;
+            justify-content: center;
+            background-image: linear-gradient(to left,pink , green);
+        }
+        .dangNhapChinh__dangNhap1 {
+            width: 700px;
+            min-height: 600px;
+            background-color: #a7d8bd;
+            margin: 60px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dangNhapChinh__bocItem {
+            margin: 0 30px;
+            position: relative;
+        }
+        .dangNhapChinh .header_dangNhap {
+            margin-bottom: 24px;
+        }
+        .dangNhapChinh .logo_dangNhap {
+            width: 170px;
+            margin: 40px 258px 0px 258px;
+        }
+        .dangNhapChinh .mieuta1 {
+            font-size: 20px;
+            color: #00b14f;
+        }
+        .dangNhapChinh .mieuta2 {
+            font-size: 16px;
+            color: #6c757d;
+        }
+        .spaceDangNhap {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .dangNhapChinh .oInput{
+            display: flex;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 3px;
+        }
+        .dangNhapChinh .inputdangNhap {
+            padding: 4px 10px;
+            outline: none;
+            border: none;
+        }
+        .dangNhapChinh .icon {
+            padding: 4px 10px;
+            color: #00b14f;
+        }
+        .dangNhapChinh .dangNhap-p {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #4d5965;
+        }
+        .dangNhapChinh .form {
+            margin-top: 30px;
+        }
+        .dangNhapChinh .mk {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .dangNhapChinh .quenmk {
+            font-size: 14px;
+            color: #00b14f;
+            text-decoration: none;
+        }
+        .dangNhapChinh .Quenmk {
+            margin-top: 26px;
+        }
+        .dangNhapChinh .submit1 {
+            width: 100%;
+            background: #00b14f;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            padding: 12px;
+            line-height: 20px;
+            border-radius: 4px;
+        }
+        .dangNhapChinh .submit1 {
+            margin: 26px 0;
+            cursor: pointer;
+        }
+        .dangNhapChinh .submit1:hover {
+            opacity: 0.8;
+        }
+        .dangNhapChinh .hoac {
+            display: flex;
+            justify-content: center;
+        }
+        .dangNhapChinh .hoac1 {
+            font-size: 15px;
+            margin-bottom: 26px;
+            color: #4d5965;
+        }
+        .dangNhapChinh .link{
+            display: flex;
+            justify-content: space-around;
+        }
+        .dangNhapChinh .item{
+            text-decoration: none;
+            display: flex;
+            font-size: 16px;
+            color: #fff;
+            padding: 12px 39px;
+            background-color: #e73b2f;
+            border-radius: 4px;
+        }
+        .dangNhapChinh .link .icon-link {
+            margin-right: 4px;
+        }
+        .dangNhapChinh .link .facebook {
+            background-color: #1877f2;
+        }
+        .dangNhapChinh .link .Twitter {
+            background-color: #0a66c2;
+        }
+        .dangNhapChinh .item:hover {
+            opacity: 0.8;
+        }
+        .disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .dangNhapChinh .duoilink {
+            display: flex;
+            margin-top: 16px;
+        }
+        .font-16px {
+            font-size: 16px;
+            color: #4d5965;;
+        }
+        .dangNhapChinh .link-check {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+        .dangNhapChinh .xacnhan-link {
+            text-decoration: none;
+            color: #00b14f;
+        }
+        .dangNhapChinh .chuacoTk {
+            justify-content: center;
+        }
+        .chuacoTk__link {
+            margin-left: 4px;
+        }
+
+         /* animation  */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 700px) {
+              .header__page1__items1 .list__item {
+                display: block;
+             }
+        }
+    </style>
+</head>
+<body>
+<!-- form đăng nhập -->
+<div class="dangNhapChinh">
+    <div class="dangNhapChinh__dangNhap1">
+        <div class="dangNhapChinh__bocItem">
+            <div class="header_dangNhap">
+                <img class="logo_dangNhap"
+                     src="./static/data/bus.png" alt="My Bus Logo">
+            </div>
+            <div class="container">
+                <h1 class="text-center">ĐĂNG NHẬP</h1>
+                {% if err_msg %}
+                <div class="alert alert-danger">
+                    {{ err_msg }}
+                </div>
+                {% endif %}
+                <form method="post">
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" name="username" placeholder="Enter username..." class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Enter password..." class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Đăng nhập" class="btn btn-danger"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="duoilink chuacoTk">
+                <p class="hoac1">Bạn chưa có tài khoản?</p>
+                <a href="/dangky" class="xacnhan-link chuacoTk__link">Đăng ký ngay</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

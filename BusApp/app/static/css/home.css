@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Calibri, sans-serif;
+}
+
+a {
+    text-decoration: none !important;
+    color: #ccc;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #002244;
+    color: white;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar nav ul li a, .auth a, .social-media a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner {
+        /*background: url("{{ url_for('static', filename='data/banner.avif') }}") no-repeat center center / cover;    color: #333;*/
+    text-align: left;
+    padding: 100px 20px;
+}
+
+.banner h1 {
+    font-size: 36px;
+}
+
+.banner span {
+    color: #007bff;
+}
+
+.search-trip {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-trip form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-trip form div {
+    flex: 1;
+}
+
+.search-trip label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.search-trip input, .search-trip select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-btn {
+    background-color: #a50000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Giới thiệu dịch vụ */
+.services {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f0f0f0;
+}
+
+.services h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.services p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.service-items {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    width: 200px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-item img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Tuyến phổ biến */
+.popular-routes {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.popular-routes h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.popular-routes p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.route-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.route-item {
+    display: flex;
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.route-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.route-info {
+    padding: 10px;
+    text-align: left;
+}
+
+.route-info h3 {
+    font-size: 16px;
+    color: #d9534f;
+    margin: 0;
+}
+
+.route-info p {
+    font-size: 14px;
+    color: #555;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+</head>
+<body>
+    <h1>Chọn Điểm Đi và Điểm Đến</h1>
+    <div>
+        <label for="departure">Điểm đi</label>
+        <select name="departure">
+            <option value="" disabled selected>Chọn tỉnh thành</option>
+            {% for province in provinces %}
+                <option value="{{ province.code }}">{{ province.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="destination">Điểm đến</label>
+        <select name="destination">
+            <option value="" disabled selected>Chọn tỉnh thành</option>
+            {% for province in provinces %}
+                <option value="{{ province[0] }}">{{ province[1] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</body>
+</html>
