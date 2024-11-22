@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Đặt Vé</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datve.css') }}">
+    <script src="{{ url_for('static', filename='js/datve.js') }}"></script>
+</head>
+<body class="bg">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='data/bus.png') }}" alt="My Bus Logo"
+                                              class="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/lichtrinh">Lịch trình</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ttlienhe">Liên hệ</a></li>
+                <li class="nav-item"><a class="nav-link" href="/lshoadon">Hóa đơn</a></li>
+                <li class="nav-item"><a class="nav-link" href="/datve">Đặt vé</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label>Điểm đi</label>
+            <select name="diem_di" class="form-select">
+                <option value="" disabled selected>Chọn điểm đến</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Bạc Liêu">Bạc Liêu</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Điểm đến</label>
+            <select name="diem_den" class="form-select">
+                <option value="" disabled selected>Chọn điểm đến</option>
+                <option value="Bắc Ninh">Bắc Ninh</option>
+                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                <option value="Hưng Yên">Hưng Yên</option>
+                <option value="Cà Mau">Cà Mau</option>
+                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Bến đi</label>
+            <select name="ben_di" class="form-select">
+                <option value="" disabled selected>Chọn bến đi</option>
+                <option value="Bến xe Giáp Bát">Bến xe Giáp Bát</option>
+                <option value="Bến xe Nước Ngầm">Bến xe Nước Ngầm</option>
+                <option value="Bến xe Vĩnh Yên">Bến xe Vĩnh Yên</option>
+                <option value="Bến xe Miền Đông">Bến xe Miền Đông</option>
+                <option value="Bến xe Miền Tây">Bến xe Miền Tây</option>
+                <option value="Bến xe Cần Thơ">Bến xe Cần Thơ</option>
+                <option value="Bến xe Bạc Liêu">Bến xe Bạc Liêu</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Bến đến</label>
+            <select name="ben_den" class="form-select">
+                <option value="" disabled selected>Chọn bến đến</option>
+                <option value="Bến xe Bắc Ninh">Bến xe Bắc Ninh</option>
+                <option value="Bến xe Vĩnh Yên">Bến xe Vĩnh Yên</option>
+                <option value="Bến xe Hưng Yên">Bến xe Hưng Yên</option>
+                <option value="Bến xe Chợ Lớn">Bến xe Chợ Lớn</option>
+                <option value="Bến xe An Sương">Bến xe An Sương</option>
+                <option value="Bến xe Miền Tây">Bến xe Miền Tây</option>
+                <option value="Bến xe Sóc Trăng">Bến xe Sóc Trăng</option>
+                <option value="Bến xe Cà Mau">Bến xe Cà Mau</option>
+            </select>
+        </div>
+        <div class="container my-4">
+    <div class="row justify-content-center align-items-end">
+        <!-- Chỗ chọn ghế -->
+        <div class="col-md-4" id="chongoi">
+            <h5 class="text-center">Chọn ghế ngồi</h5>
+            <div class="row">
+                <div class="col-6">
+                    <h6 class="text-center">Dãy trên:</h6>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <!-- Các nút ghế ở dãy trên -->
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="1">1</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="2">2</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="3">3</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="4">4</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="5">5</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="6">6</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="7">7</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="8">8</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="9">9</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="10">10</button>
+                    </div>
+                </div>
+
+                <!-- Dãy dưới -->
+                <div class="col-6">
+                    <h6 class="text-center">Dãy dưới:</h6>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <!-- Các nút ghế ở dãy dưới -->
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="11">1</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="12">2</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="13">3</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="14">4</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="15">5</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="16">6</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="17">7</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="18">8</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="19">9</button>
+                        <button class="btn btn-outline-primary seat" onclick="getValueButton(this)" value="20">10</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chỗ chọn ngày đi và ngày về -->
+        <div class="col-md-3 mb-3">
+            <label>Ngày đi</label>
+            <input id="ngaydi" type="date" class="form-control">
+        </div>
+        <div class="col-md-3 mb-3">
+            <label>Ngày về</label>
+            <input id="ngayve" type="date" class="form-control">
+        </div>
+
+        <!-- Nút tìm chuyến xe -->
+        <div class="col-md-2 mt-4 d-flex justify-content-center">
+            <button class="btn btn-danger btn1" onclick="showResult()">Tìm chuyến xe</button>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<div class="container my-4">
+    <div id="resultContainer" class="d-flex flex-wrap justify-content-center">
+        <div class="card mb-3" style="width: 30%;">
+            <div class="card-body d-flex justify-content-center align-items-center" style="height: 150px;">
+                <div class="alert alert-info">
+                    Vui lòng chọn chuyến đi!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

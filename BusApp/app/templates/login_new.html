@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginAd_new.css') }}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="login-container row no-gutters">
+                    <div class="col-md-6 p-4">
+                        <h2 class="text-center mb-4">Đăng nhập hệ thống quản trị</h2>
+                        <form action="/loginAd" method="post">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mật khẩu:</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                            </div>
+                            <div class="btn-submit">
+                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                            </div>
+                        </form>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="col-md-6 login-image d-flex align-items-center">
+                        <img src="{{ url_for('static', filename='data/login_image.jpg') }}" alt="Login Illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

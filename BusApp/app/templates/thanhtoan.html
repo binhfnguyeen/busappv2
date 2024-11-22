@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang thanh toán</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/thanhtoan.css') }}"/>
+    <script src="{{ url_for('static', filename='js/datve.js') }}"></script>
+</head>
+<body>
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    Thông tin hành khách
+                </div>
+                <div id="thongTinHanhKhach" class="card-body">
+                    <table class="table table-bordered table-sm">
+                        <tbody>
+                        <tr>
+                            <td><strong>Họ và tên</strong></td>
+                            <td>Nguyễn Văn A</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td>nguyenvana@example.com</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Số điện thoại</strong></td>
+                            <td>0901234567</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Điểm đi</strong></td>
+                            <td id="diemDi">Cần Thơ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Điểm đến</strong></td>
+                            <td id="diemDen">Sài Gòn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ngày đi</strong></td>
+                            <td id="ngayDi">2023-12-01</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ngày về</strong></td>
+                            <td id="ngayVe">2023-12-16</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Điểm lên xe</strong></td>
+                            <td id="benDi">BX miền Tây</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Điểm xuống xe</strong></td>
+                            <td id="benDen">BX miền Tây</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Xe đi</strong></td>
+                            <td id="xeDi">1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chỗ ngồi</strong></td>
+                            <td id="choNgoi">1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Khoảng cách</strong></td>
+                            <td id="khoangCach">50 km</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tổng số tiền</strong></td>
+                            <td id="giaVe">180000 VND</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-white">
+                    Quy định và điều khoản
+                </div>
+                <div class="card-body">
+                    <p><strong>QUY ĐỊNH & ĐIỀU KHOẢN</strong></p>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">
+                            (*) Quý khách vui lòng mang email có chứa mã vé đến văn phòng để đổi vé lên xe trước giờ
+                            xuất bến ít nhất 60 phút để chúng tôi trung chuyển.
+                        </li>
+                        <li class="list-group-item">
+                            (*) Thông tin hành khách phải chính xác, nếu không sẽ không thể lên xe hoặc hủy/đổi vé.
+                        </li>
+                        <li class="list-group-item">
+                            (*) Quý khách không được đổi/trả vé vào các ngày Lễ Tết (ngày thường quý khách được quyền
+                            chuyển đổi hoặc hủy vé một lần duy nhất trước giờ xe chạy 24 giờ), phí hủy vé 10%.
+                        </li>
+                        <li class="list-group-item">
+                            (*) Nếu quý khách có nhu cầu trung chuyển, vui lòng liên hệ số điện thoại 1900 2082 trước
+                            khi đặt vé. Chúng tôi không đón/trung chuyển tại những điểm xe trung chuyển không thể tới
+                            được.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12 text-center">
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/datve" class="btn btn-secondary btn-lg">Quay lại</a>
+            <a href="/checkout" id="btnThanhToan" onclick="thanhToanDonHang()" class="btn btn-primary btn-lg">Thanh toán</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    const paymentModal = document.getElementById('paymentModal');
+    const btnThanhToan = document.getElementById('btnThanhToan');
+    const closePaymentModal = document.getElementById('closePaymentModal');
+    const noti = document.getElementById('noti');
+    const notiMessage = document.getElementById('notiMessage');
+    const dongBtn = document.getElementById('dongBtn');
+
+    document.getElementById('btnXacNhanTT').onclick = function() {
+    const personName = document.getElementById('personName').value.trim();
+    const cardNumber = document.getElementById('cardNumber').value.trim();
+    const expiry = document.getElementById('expiry').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+
+        // Kiểm tra các trường nhập liệu
+    if (personName && cardNumber && expiry && cvv) {
+       paymentModal.style.display = "none"; // Ẩn modal Thanh Toán
+       notiMessage.textContent = "Thanh toán thành công!"; // Thông báo thành công
+    } else {
+       notiMessage.textContent = "Thanh toán thất bại! Vui lòng điền đầy đủ thông tin."; // Thông báo thất bại
+    }
+
+       noti.style.display = "block"; // Hiển thị modal Thông báo
+    };
+
+    // Đóng thông báo khi nhấn vào nút đóng trong modal Thông báo
+    dongBtn.onclick = function() {
+        noti.style.display = "none";
+    };
+</script>
+</body>
+</html>

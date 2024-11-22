@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bus - Bán vé xe</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/home.css') }}">
+    <script src="{{ url_for('static', filename = 'js/home.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="top-bar">
+        <div class="contact-info">
+            <a href="mailto:mybus@gmail.com">mybus@gmail.com</a> |
+            <a href="tel:0900800760">090-080-0760</a>
+        </div>
+        <div class="social-media">
+            <a href="#">Facebook</a> |
+            <a href="#">Twitter</a>
+        </div>
+    </div>
+    <div class="navbar">
+        <img src="./static/data/bus.png" alt="My Bus Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="/lichtrinh">Lịch Trình</a></li>
+                <li><a href="/ttlienhe">Liên Hệ</a></li>
+                <li><a href="/lshoadon">Hóa Đơn</a></li>
+                <li><a href="/datve">Đặt vé</a></li>
+            </ul>
+        </nav>
+        {% if session.get('username') %}
+        <!-- Nếu người dùng đã đăng nhập, hiển thị username và link đăng xuất -->
+        <a href="">Đăng xuất ({{ session['username'] }})</a>
+        {% else %}
+        <!-- Nếu chưa đăng nhập, hiển thị "Đăng Nhập / Đăng Ký" -->
+        <a href="/login">Đăng Nhập / Đăng Ký</a>
+        {% endif %}
+    </div>
+</header>
+
+<!-- Banner -->
+<section class="banner"
+         style="background: url({{ url_for('static', filename='data/banner.avif') }}) no-repeat center center / cover">
+    <h1>Welcome to <span>My Bus</span></h1>
+    <p>Đi để khám phá bản thân, đi để tìm thấy câu trả lời hạnh phúc thật sự</p>
+</section>
+
+<!-- Tìm Chuyến Xe -->
+
+
+<section class="search-trip">
+    <form method="get" action="/search">
+        <div>
+            <label for="departure">Điểm đi</label>
+            <select name="departure">
+                <option value="" disabled selected>Chọn tỉnh thành</option>
+                {% for province in provinces %}
+                <option value="{{province[0]}}">{{province[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="destination">Điểm đến</label>
+            <select name="destination">
+                <option value="" disabled selected>Chọn tỉnh thành</option>
+                {% for province in provinces %}
+                <option value="{{ province[0] }}">{{province[1]}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="departure-date">Ngày đi</label>
+            <input type="date" id="departure-date" name="departure-date">
+        </div>
+        <div>
+            <label for="return-date">Ngày về</label>
+            <input type="date" id="return-date" name="return-date">
+        </div>
+        <button type="submit" class="search-btn">TÌM CHUYẾN XE</button>
+    </form>
+</section>
+{#ket qua tim kieam#}
+{% if data %}
+<section class="popular-routes">
+    <h2>KẾT QUẢ</h2>
+    <p>Gợi ý những tuyến xe liên quan</p>
+    <div class="route-list">
+        {% for row in data %}
+        <div class="route-item">
+            <img src="{{ url_for('static', filename = 'data/saigon.jpg') }}" alt="Cần Thơ ⇨ Sài Gòn">
+            <div class="route-info">
+                <h3>{{ row[0] }} ⇨ {{ row[1] }}</h3>
+                <p>⏱ {{ row[3] }} | 📍 {{ row[2] }} km </p>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- Thêm các tuyến khác theo mẫu trên -->
+    </div>
+</section>
+{% else %}
+<p>Không có lịch trình phù hợp.</p>
+{% endif %}
+<!-- Giới thiệu dịch vụ -->
+<section class="services">
+    <h2>MY BUS - CHẤT LƯỢNG LÀ DANH DỰ</h2>
+    <p>Được khách hàng tin tưởng và lựa chọn</p>
+    <div class="service-items">
+        <div class="service-item">
+            <i class="fa-solid fa-gears"></i>
+            <h3>Tiện Lợi</h3>
+            <p>Mua vé xe mọi lúc, mọi nơi mà không tốn nhiều thời gian.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-headphones-simple"></i>
+            <h3>Hỗ Trợ 24/7</h3>
+            <p>Chúng tôi cung cấp dịch vụ chăm sóc khách hàng 24 giờ.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-solid fa-list-check"></i>
+            <h3>Thông tin đầy đủ</h3>
+            <p>Cung cấp lộ trình, tuyến đường, và thông tin chi tiết chuyến đi.</p>
+        </div>
+        <div class="service-item">
+            <i class="fa-brands fa-amazon-pay"></i>
+            <h3>Thanh toán dễ dàng</h3>
+            <p>Hỗ trợ nhiều hình thức thanh toán tiện lợi cho bạn.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Tuyến phổ biến -->
+<section class="popular-routes">
+    <h2>TUYẾN PHỔ BIẾN</h2>
+    <p>Gợi ý những tuyến xe được đặt nhiều</p>
+    <div class="route-list">
+        <div class="route-item">
+            <img src="{{ url_for('static', filename = 'data/saigon.jpg') }}" alt="Cần Thơ ⇨ Sài Gòn">
+            <div class="route-info">
+                <h3>Cần Thơ ⇨ Sài Gòn</h3>
+                <p>⏱ 4h | 📍 168km | 💰 150.000₫</p>
+            </div>
+        </div>
+        <div class="route-item">
+            <img src="{{ url_for('static', filename = 'data/angiang.jpg') }}" alt="Cần Thơ ⇨ An Giang">
+            <div class="route-info">
+                <h3>Cần Thơ ⇨ An Giang</h3>
+                <p>⏱ 3h | 📍 62km | 💰 100.000₫</p>
+            </div>
+        </div>
+        <!-- Thêm các tuyến khác theo mẫu trên -->
+    </div>
+</section>
+
+</body>
+</html>
