@@ -3,17 +3,18 @@ import sqlite3
 import stripe
 from flask import Blueprint, Flask, render_template, request
 from flask import jsonify
+import os
 app = Flask(__name__)
 datve_blueprints = Blueprint("datve", __name__)
 
 stripe.api_key = "sk_test_51QKFWxHwA2xtXgiVV3nkxS8tuCsiDbIVbpOfLPtnoa82UGwlwyYRdlw9I2SnO3Ix6PtaReYomTMr6AhGUPCEW5kI00bovmtMxJ"
 def get_data_from_db(query, params):
     try:
-        conn = sqlite3.connect('data/database.db')
-        cursor = conn.cursor()
-        cursor.execute(query, params)
-        result = cursor.fetchall()
-        return result
+        with sqlite3.connect(os.path.join(os.path.dirname(__file__), 'data/database.db')) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query, params)
+            result = cursor.fetchall()
+            return result
     except sqlite3.Error as e:
         print("Lỗi cơ sở dữ liệu:", e)
         return None

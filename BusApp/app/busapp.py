@@ -5,7 +5,7 @@ from BusApp.app.datve import datve_blueprints
 import sqlite3
 import os
 import json
-import dao
+from BusApp.app import dao
 from BusApp.app import app, db
 import smtplib
 from email.mime.text import MIMEText
